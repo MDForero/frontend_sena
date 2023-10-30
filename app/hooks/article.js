@@ -21,7 +21,10 @@ export default function useArticle() {
 
     const createArticle = async (data) => {
         await csrf()
-        axios.post('/api/article', data).then(res => res.data).catch(error => { alert(error.response.status + ' ' + error.response.data.message) })
+        axios.post('/api/article', data).then(res => {
+            alert("el producto ha sido agregado" + res.status)
+            window.location.href = '/dashboard/articulos/'
+        }).catch(error => { alert(error.response.status + ' ' + error.response.data.message) })
     }
 
     const show = async (id) => {

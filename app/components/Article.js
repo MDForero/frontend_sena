@@ -17,7 +17,7 @@ export default function Article({ data }) {
     return <article>
         <fieldset className="w-52 text-center p-2 border-2 shadow-2xl">
             <legend>{data?.name}</legend>
-            <img src={'http://127.0.0.1:8000/storage/' + data?.image} width={0} height={0} alt={data?.title} loading="lazy" className="h-80 w-52 object-cover" />
+            <img src={'http://127.0.0.1:8000/storage/' + data?.image} width={0} height={0} alt={data?.title} className="h-80 w-52 object-cover" />
         </fieldset>
         <div className="flex flex-wrap gap-3 m-2 mx-auto w-full justify-center">
             {amount !== 0 && <button onClick={() => setAmount(amount - 1)}>-</button>}
