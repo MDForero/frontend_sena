@@ -8,13 +8,13 @@ const axios = Axios.create({
     }
 })
 
-export default async function useInvoices() {
+export default  function useInvoices() {
     const getData = async () => {
         const res = await axios.get('/api/invoices').then(res => res.data)
         return res
     }
     const postInvoice = async (data) => {
-        await axios.post('/api/invoices', data).then(res => res.data).catch(error => {console.log(first(error.response.data.errors))})
+        await axios.post('/api/invoices', data).then(res => {alert(res.status)}).catch(error => {console.log(error.response.data.errors)})
     }
     const show = async (id) => {
         await axios.get(`/api/invoices/${id}`).then(res => alert(res.data)).catch(error => { console.log(error) })

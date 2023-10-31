@@ -1,4 +1,6 @@
+
 import ButtonUpdate from "@/app/components/ButtonUpdate"
+import FormInvoices from "@/app/components/FormInvoices"
 import { Td, Th } from "@/app/components/Table"
 import useOrder from "@/app/hooks/order"
 
@@ -16,33 +18,37 @@ export async function generateStaticParams() {
 export default async function Order({ params }) {
     const data = await useOrder().show(params.id)
     const infOrder = JSON.parse(data.order.plates)
-    return <>
-    <table>
-        <thead>
-            <tr>
-                <Th>Nombre</Th>
-                <Th>Cantidad</Th>
-                <Th>Precio</Th>
-                <Th>Subtotal</Th>
-                <Th>Eliminar</Th>
-            </tr>
-        </thead>
-        <tbody>
-            {infOrder.map((item, index) => <tr key={index}>
-                <Td>{item.name}</Td>
-                <Td className='text-right'>{item.amount}</Td>
-                <Td>{item.value}</Td>
-                <Td>{item.value * item.amount}</Td>
-            </tr>)}
-        </tbody>
-        <tfoot>
-            <tr>
-                <Td colSpan="3">Total</Td>
-                <Td>{infOrder.reduce((acc, item) => acc + item.value * item.amount, 0)}</Td>
-            </tr>
-        </tfoot>
-    </table>
-    <ButtonUpdate cart={infOrder}/>
     
+    
+    return <>
+        <table>
+            <thead>
+                <tr>
+                    <Th>Nombre</Th>
+                    <Th>Cantidad</Th>
+                    <Th>Precio</Th>
+                    <Th>Subtotal</Th>
+                    <Th>Eliminar</Th>
+                </tr>
+            </thead>
+            <tbody>
+                {infOrder.map((item, index) => <tr key={index}>
+                    <Td>{item.name}</Td>
+                    <Td className='text-right'>{item.amount}</Td>
+                    <Td>{item.value}</Td>
+                    <Td>{item.value * item.amount}</Td>
+                </tr>)}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <Td colSpan="3">Total</Td>
+                    <Td>{infOrder.reduce((acc, item) => acc + item.value * item.amount, 0)}</Td>
+                </tr>
+            </tfoot>
+        </table>
+        <FormInvoices id={params.id}/>
+        
+        <ButtonUpdate cart={infOrder} />
+
     </>
 }
