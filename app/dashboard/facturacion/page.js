@@ -3,9 +3,9 @@ import useInvoices from "@/app/hooks/invoices"
 
 export default async function page() {
     const data = await useInvoices().getData()
-    return <>
-        <table>
-            <thead>
+    return <section className="flex justify-center items-center">
+        <table className="border-2 table-fixed border-separate border-spacing-2">
+            <thead className="">
                 <tr>
                     <Th>id</Th>
                     <Th>Nombre</Th>
@@ -26,5 +26,5 @@ export default async function page() {
                 </tr>)}
             </tbody>
         </table>
-    </>
+    </section>
 }

@@ -27,10 +27,14 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
 
         axios
             .post('/register', props)
-            .then(() => mutate())
+            .then((res) => {
+                console.log(res.data, res.status)
+                mutate()
+            })
             .catch(error => {
                 if (error.response.status !== 422) throw error
                 setErrors(error.response.data.errors)
+                console.log(error.response.data.errors)
             })
     }
 
@@ -107,6 +111,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
         )
             router.push(redirectIfAuthenticated)
         if (middleware === 'auth' && error) logout()
+       
     }, [user, error])
 
     return {

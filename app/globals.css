@@ -2,3 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+
+::-webkit-scrollbar {
+    width: 5px; /* Grosor del scrollbar en Chrome, Safari y Opera */
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #888; /* Color del thumb del scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Color del track del scrollbar */
+}
+

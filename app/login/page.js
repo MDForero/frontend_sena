@@ -115,7 +115,13 @@ const Login = () => {
                         </label>
                     </div>
 
-                    <div className="flex items-center justify-end mt-4">
+                    <div className="flex items-center justify-between mt-4">
+                        <Link
+                            href="/registro"
+                            className="underline text-sm text-gray-600 hover:text-gray-900">
+                            Registrar
+                        </Link>
+                        <div>
                         <Link
                             href="/recuperar-contrasena"
                             className="underline text-sm text-gray-600 hover:text-gray-900">
@@ -123,6 +129,7 @@ const Login = () => {
                         </Link>
 
                         <Button className="ml-3">Login</Button>
+                                </div>
                     </div>
                 </form>
             </AuthCard>

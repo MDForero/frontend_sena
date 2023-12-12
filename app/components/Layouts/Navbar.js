@@ -2,7 +2,6 @@ import Link from 'next/link'
 import React from 'react'
 
 const Navbar = ({ links, root }) => {
-
     return (<>
         <nav className='w-full'>
             <div className="relative bg-white dark:bg-gray-800 ">

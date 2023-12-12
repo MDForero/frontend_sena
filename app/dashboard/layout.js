@@ -10,15 +10,16 @@ import { useEffect } from "react"
 const DashboardLayout = ({ children }) => {
   const router = useRouter()
   const { user } = useAuth()
+  console.log(user)
   useEffect(() => {
     if (!user) router.push('/login')
   }, [user])  
   return (
-    <section>
+    <section className="h-screen overflow-hidden">
       <Navigation user={user} />
       <section className="flex">
 
-        <Sidebar />
+        <Sidebar user={user}/>
         <main className="w-full">
           <CartProvider>
             {children}

@@ -6,7 +6,7 @@ import Link from 'next/link'
 export default function Home() {
   const { user } = useAuth({ middleware: 'guest' })
   return (
-    <div className="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
+    <div className="relative flex items-top justify-center min-h-screen bg-gray-100  sm:items-center sm:pt-0">
       <div className="hidden fixed top-0 right-0 px-6 py-4 sm:block">
         {user ? (
           <Link
@@ -30,10 +30,6 @@ export default function Home() {
           </>
         )}
       </div>
-
-      <h1>
-        esto es una prueba
-      </h1>
     </div>
   )
 }

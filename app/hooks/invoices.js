@@ -14,7 +14,8 @@ export default  function useInvoices() {
         return res
     }
     const postInvoice = async (data) => {
-        await axios.post('/api/invoices', data).then(res => {alert(res.status)}).catch(error => {console.log(error.response.data.errors)})
+        await axios.post('/api/invoices', data).then(res => {alert(res.status)}).catch(error => {
+            console.log(error.response.data.errors)})
     }
     const show = async (id) => {
         await axios.get(`/api/invoices/${id}`).then(res => alert(res.data)).catch(error => { console.log(error) })
