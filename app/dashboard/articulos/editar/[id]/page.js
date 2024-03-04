@@ -1,5 +1,5 @@
 import UpdateForm from "@/app/components/UpdateForm"
-import useArticle from "@/app/hooks/article"
+import { useArticle } from "@/app/hooks/article"
 import Image from "next/image"
 
 export async function generateStaticParams() {
@@ -16,10 +16,10 @@ export default async function article({ params }) {
     const data = await show(params.id)
 
     return <>
-        <main>
+        <main className="flex">
             <Image src={'http://127.0.0.1:8000/storage/' + data.image} width={0} height={0} alt={data.name} loading="lazy" className="w-full h-[600px]" />
-        </main>
         <UpdateForm data={data} />
+        </main>
     </>
 
 }

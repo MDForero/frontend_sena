@@ -1,20 +1,14 @@
 
-import { headers } from '@/next.config'
-import Axios from 'axios'
+import axios from '../lib/axios'
 
-const axios = Axios.create({
-    baseURL: 'http://127.0.0.1:8000',
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'multipart/form-data',
-        'X-Requested-With': 'XMLHttpRequest',
-    },
-    withCredentials: true,
-})
 
-export default function useArticle() {
+export  function useArticle() {
+
     const csrf = () => axios.get('/sanctum/csrf-cookie')
+
+
     const getData = async () => {
+        await csrf()
         const res = await axios.get('/api/articles').then(res => res.data)
         return res
     }
@@ -23,27 +17,33 @@ export default function useArticle() {
         await csrf()
         axios.post('/api/article', data).then(res => {
             alert("el producto ha sido agregado" + res.status)
-            window.location.href = '/dashboard/articulos/'
-        }).catch(error => { alert(error.response.status + ' ' + error.response.data.message) })
+        }).catch(error => {
+            alert(error.response.data.status + ' ' + error.response.data.message)
+        })
     }
 
     const show = async (id) => {
+        await csrf()
         const res = await axios.get(`/api/article/${id}`).then(res => res.data).catch(error => { alert(error.response.status + ' ' + error.response.data.message) })
         return res
     }
+    
+
     const update = async (data) => {
-        console.log(data.id)
-        axios.post(`/api/article/${data.id}`, data).then(res =>{ 
-            alert("el producto ha sido actualizado"+ ' ' +res.status)
-            window.location.href = '/dashboard/articulos/editar'
-        }).catch(error => { alert(error.response.status + ' ' + error.response.data.message) })
+        await csrf()
+        axios.post(`/api/article/${data.id}`, data).then(res => {
+            alert("el producto ha sido actualizado" + ' ' + res.status)
+        }).catch(error => { alert(error.response.data.status + ' ' + error.response.data.message) })
     }
+
+
     const deleteArticle = async (id) => {
+        await csrf()
         axios.delete(`/api/article/${id}`).then(res => {
-            alert("el producto ha sido eliminado"+ ' ' +res.status)
-            window.location.href = '/dashboard/articulos/editar'
-        }).catch(error => { alert(error.response.status + ' ' + error.response.data.message) })
+            alert("el producto ha sido eliminado" + ' ' + res.status)
+        }).catch(error => { alert(error.response.data) })
     }
+
 
     return {
         createArticle,

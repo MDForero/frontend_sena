@@ -1,5 +1,5 @@
 'use client'
-import useArticle from "@/app/hooks/article";
+import {useArticle} from "@/app/hooks/article";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 

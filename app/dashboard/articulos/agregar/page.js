@@ -1,11 +1,15 @@
 'use client'
 import Input from "@/app/components/Input";
-import useArticle from "@/app/hooks/article";
+import {useArticle} from "@/app/hooks/article";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 
 export default function Agregar() {
+
+    const router = useRouter()
     const { createArticle } = useArticle()
+
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [value, setValue] = useState('')
@@ -33,6 +37,7 @@ export default function Agregar() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         createArticle({ name, description, category, value, image })
+        router.push('/dashboard/articulos')
     }
     console.log(image)
     return <div className="flex flex-wrap gap-4 justify-center items center">
