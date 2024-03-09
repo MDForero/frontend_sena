@@ -1,6 +1,6 @@
 
 import ButtonUpdate from "@/app/components/ButtonUpdate"
-import FormInvoices from "@/app/components/FormInvoices"
+import FormInvoices from "@/app/components/form/FormInvoices"
 import { Td, Th } from "@/app/components/Table"
 import useOrder from "@/app/hooks/order"
 
@@ -18,8 +18,8 @@ export async function generateStaticParams() {
 export default async function Order({ params }) {
     const data = await useOrder().show(params.id)
     const infOrder = JSON.parse(data.order.plates)
-    
-    
+
+
     return <>
         <table>
             <thead>
@@ -46,9 +46,12 @@ export default async function Order({ params }) {
                 </tr>
             </tfoot>
         </table>
-        <FormInvoices id={params.id}/>
+           
+                <FormInvoices id={params.id} value={infOrder.reduce((acc, item) => acc + item.value * item.amount, 0)} />
+                <ButtonUpdate cart={infOrder} />
+         
         
-        <ButtonUpdate cart={infOrder} />
+
 
     </>
 }

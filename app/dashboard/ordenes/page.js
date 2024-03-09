@@ -25,7 +25,7 @@ export default function Orders() {
 
 
     return <>
-        <table className="border-2 border-separate border-spacing-0 even:bg-slate-400">
+        <table className="border-2 border-separate border-spacing-0 even:bg-slate-400 mx-auto m-4 ">
             <thead>
                 <tr>
                     <Th>id orden</Th>
