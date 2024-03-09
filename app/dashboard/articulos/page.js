@@ -1,6 +1,6 @@
 'use client'
 import Article from "@/app/components/Article"
-import NavArticles from "@/app/components/NavArticles"
+import NavArticles from "@/app/components/nav/NavArticles"
 import OrderDetails from "@/app/components/OrderDetails"
 import {useArticle} from "@/app/hooks/article"
 import { useEffect, useState } from "react"
@@ -11,6 +11,12 @@ export default  function Menu() {
         const res = await useArticle().getData()
         setData(res)
     }
+
+    const search = (e) => { 
+        const filter = data.filter(item => item.name.toLowerCase().includes(e.target.value.toLowerCase()))
+        setData(filter)
+        if(e.target.value === '') getDatos()
+    }
     useEffect(() => {
         getDatos()
     },[])
@@ -19,7 +25,9 @@ return <div>
         <section className="flex max-w-full items-start h-96 ">
             <main className="w-3/4  ">
                 <h1 className="text-2xl font-bold border-b-2">Articulos</h1>
+                <input onChange={search} placeholder="buscar articulo"/>
                 <div className="flex flex-wrap gap-5 mx-3 justify-around items-center  mt-2 h-screen p-4 pb-96 overflow-hidden overflow-y-auto">
+                   
                     {data?.map((item, index) => <Article data={item} key={index} />)}
                 </div>
             </main>
