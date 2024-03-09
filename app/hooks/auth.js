@@ -38,6 +38,21 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
             })
     }
 
+    const userRegister = async ({ ...props }) => {
+        await csrf()
+
+     
+
+        axios
+            .post('/api/user-register', props)
+            .then((res) => {
+                alert(res.data, res.status)
+            })
+            .catch(error => {
+                alert(error.response.data.message, error.response.status)
+            })
+    }
+
     const login = async ({ setErrors, setStatus, ...props }) => {
         await csrf()
 
@@ -119,5 +134,6 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
         resetPassword,
         resendEmailVerification,
         logout,
+        userRegister
     }
 }
