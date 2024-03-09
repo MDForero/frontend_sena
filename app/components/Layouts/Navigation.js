@@ -1,7 +1,7 @@
 import ApplicationLogo from '@/app/components/ApplicationLogo'
 import Dropdown from '@/app/components/Dropdown'
 import Link from 'next/link'
-import NavLink from '@/app/components/NavLink'
+import NavLink from '@/app/components/nav/NavLink'
 import ResponsiveNavLink, {
     ResponsiveNavButton,
 } from '@/app/components/ResponsiveNavLink'

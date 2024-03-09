@@ -16,6 +16,7 @@ export default function Registro() {
         redirectIfAuthenticated: '/dashboard',
     })
 
+    const [nit, setNit] = useState('')
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -29,6 +30,7 @@ export default function Registro() {
             name,
             email,
             password,
+            nit,
             password_confirmation: passwordConfirmation,
             setErrors,
         })
@@ -73,6 +75,21 @@ export default function Registro() {
                         />
 
                         <InputError messages={errors.email} className="mt-2" />
+                    </div>
+                    {/* nit */}
+                    <div className="mt-4">
+                        <Label htmlFor="nit">Nit</Label>
+
+                        <Input
+                            id="nit"
+                            type="text"
+                            value={nit}
+                            className="block mt-1 w-full"
+                            onChange={event => setNit(event.target.value)}
+                            required
+                        />
+
+                        <InputError messages={errors.nit} className="mt-2" />
                     </div>
 
                     {/* Password */}
