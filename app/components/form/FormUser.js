@@ -20,7 +20,7 @@ const FormUser = ({id, data}) => {
     }
     
     return (
-        <form onSubmit={(e)=>handleSubmit(e)}>
+        <form onSubmit={(e)=>handleSubmit(e)} className='inline-flex gap-4'>
             <fieldset>
                 <legend>
                     Nombre
