@@ -1,4 +1,4 @@
-import UpdateForm from "@/app/components/UpdateForm"
+import UpdateForm from "@/app/components/form/UpdateForm"
 import { useArticle } from "@/app/hooks/article"
 import Image from "next/image"
 

@@ -17,15 +17,12 @@ const DashboardLayout = ({ children }) => {
   return (
     <section className="h-screen overflow-hidden">
       <Navigation user={user} />
-      <section className="flex">
-
         <Sidebar user={user}/>
         <main className="w-full">
           <CartProvider>
             {children}
           </CartProvider>
         </main>
-      </section>
     </section>
   )
 
