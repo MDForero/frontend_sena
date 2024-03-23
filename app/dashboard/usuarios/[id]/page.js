@@ -1,27 +1,29 @@
+'use client'
 import useUser from "@/app/hooks/user";
 import FormUser from "@/app/components/form/FormUser";
 import TableInvoice from "@/app/components/table/TableInvoice";
-
-export async function generateStaticParams() {
-    const { getData } = useUser()
-    const data = await getData()
-    return data?.user?.map(user => {
-        return {
-            params: {
-                id: user.nit
-            }
-        }
-    })
-}
+import { useEffect, useState } from "react";
+import { useAuth } from "@/app/hooks/auth";
 
 
-export default async function page({ params }) {
+export default function page({ params }) {
+    const { token } = useAuth()
     const { show } = useUser()
-    const data = await show(params.id)
-    const { invoices } = data.user
+    const [user, setUser] = useState()
+    const [invoices, setInvoices] = useState()
+    const data = async () =>{  
+        const datos = await show(params.id, token)
+        setUser(datos)
+        setInvoices(datos?.invoices)
+    }
+
+    useEffect(() => {
+        data()
+    }, [])
+
     return (
         <div className="flex flex-col justify-center items-center space-y-8">
-            <FormUser id={params.id} data={data} />
+            <FormUser id={params.id} data={user} token={token} />
             <TableInvoice invoice={invoices} />
         </div>
     )

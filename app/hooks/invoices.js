@@ -1,4 +1,5 @@
 import Axios from 'axios'
+import { useAuth } from './auth'
 
 const axios = Axios.create({
     baseURL: 'http://127.0.0.1:8000',
@@ -10,12 +11,16 @@ const axios = Axios.create({
 })
 
 export default  function useInvoices() {
-    const getData = async () => {
-        const res = await axios.get('/api/invoices').then(res => res.data).catch(error => { console.log(error) })
+    const getData = async (token) => {
+        const res = await axios.get('/api/invoices' , {headers:{
+            'Authorization': `Bearer ${token}`
+        }}).then(res => res.data).catch(error => { console.log(error) })
         return res
     }
-    const postInvoice = async (data) => {
-        await axios.post('/api/invoices', data).then(res => {alert(res.status)}).catch(error => {
+    const postInvoice = async ({data, token}) => {
+        await axios.post('/api/invoices', data, { headers:{
+            'Authorization': `Bearer ${token}`
+        }}).then(res => {alert(res.status)}).catch(error => {
             alert(error.response.data.message)
             console.log(error.response.data.error)
         }

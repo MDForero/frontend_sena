@@ -1,8 +1,10 @@
 'use client'
 
+import { useAuth } from "@/app/hooks/auth"
 import useMaterial from "@/app/hooks/material"
 
 export default function FormMaterial({id = null, name = null, quantity = null}) {
+    const {token} = useAuth()
     const handleSubmit = async (e) => {
         e.preventDefault()
         const { name, quantity } = e.target
@@ -10,10 +12,9 @@ export default function FormMaterial({id = null, name = null, quantity = null}) 
             name: name.value,
             quantity: quantity.value
         }
-        await useMaterial().create(data)
+        await useMaterial().create({data, token})
         name.value = ""
         quantity.value = ""
-        window.location.reload()
     }
     return <form onSubmit={handleSubmit} className="flex flex-col gap-4 justify-center items-center w-full ">
         <fieldset className="flex gap-2 w-fit border p-4 ">

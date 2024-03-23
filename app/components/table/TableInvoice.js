@@ -35,7 +35,7 @@ const TableInvoice = ({ invoice }) => {
                 </tr>
             </thead>
             <tbody>
-                {search.map((item) => <tr key={item.id}>
+                {search?.map((item) => <tr key={item.id}>
                     <Td>{date(item.created_at)}</Td>
                     <Td>{item.id}</Td>
                     <Td>{item.status}</Td>
@@ -48,7 +48,7 @@ const TableInvoice = ({ invoice }) => {
                     <td></td>
                     <td></td>
                     <td className=" text-right">Valor</td>
-                    <td className=" text-center">{search.length !== 0 ?search.map(item => item.value).reduce((acc, item) => acc + item) : NaN}</td>
+                    <td className=" text-center">{search?.length !== 0 ?search?.map(item => item.value).reduce((acc, item) => acc + item) : NaN}</td>
                 </tr>
             </tfoot>
         </table>

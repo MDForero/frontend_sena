@@ -1,7 +1,7 @@
 'use client'
 import useSWR from 'swr'
 import axios from '@/app/lib/axios'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
@@ -13,14 +13,13 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
             .then(res => res.data)
             .catch(error => {
                 if (error.response.status !== 409) throw error
-
                 router.push('/verify-email')
             }),
     )
 
     const csrf = () => axios.get('/sanctum/csrf-cookie')
 
-    const register = async ({ setErrors, ...props }) => {
+    const register = async ({ setErrors, ...props }) => {   
         await csrf()
 
         setErrors([])
@@ -40,13 +39,10 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
 
     const userRegister = async ({ ...props }) => {
         await csrf()
-
-     
-
         axios
             .post('/api/user-register', props)
             .then((res) => {
-                alert(res.data, res.status)
+                alert(res.data.message, res.status)
             })
             .catch(error => {
                 alert(error.response.data.message, error.response.status)
@@ -118,16 +114,16 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
     }
 
     useEffect(() => {
-        if (middleware === 'guest' && redirectIfAuthenticated && user)
+        if (middleware === 'guest' && redirectIfAuthenticated && user?.user)
             router.push(redirectIfAuthenticated)
-        if (window.location.pathname === '/verify-email' && user?.email_verified_at)
+        if (window.location.pathname === '/verify-email' && user?.user?.email_verified_at)
             router.push(redirectIfAuthenticated)
         if (middleware === 'auth' && error) logout()
-       
-    }, [user, error])
+    }, [user?.user, error])
 
     return {
-        user,
+        token: user?.token,
+        user: user?.user,
         register,
         login,
         forgotPassword,
@@ -137,3 +133,4 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
         userRegister
     }
 }
+

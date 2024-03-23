@@ -7,9 +7,11 @@ export  function useArticle() {
     const csrf = () => axios.get('/sanctum/csrf-cookie')
 
 
-    const getData = async () => {
+    const getData = async (token) => {
         await csrf()
-        const res = await axios.get('/api/articles').then(res => res.data)
+        const res = await axios.get('/api/articles', {headers:{
+            'Authorization': `Bearer ${token}`
+        }}).then(res => res.data)
         return res
     }
 
@@ -22,9 +24,11 @@ export  function useArticle() {
         })
     }
 
-    const show = async (id) => {
+    const show = async (id , token) => {
         await csrf()
-        const res = await axios.get(`/api/article/${id}`).then(res => res.data).catch(error => { alert(error.response.status + ' ' + error.response.data.message) })
+        const res = await axios.get(`/api/article/${id}`, {headers: {
+            'Authorization': `Bearer ${token}`
+        }}).then(res => res.data).catch(error => { alert(error.response.status + ' ' + error.response.data.message) })
         return res
     }
     

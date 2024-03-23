@@ -2,7 +2,7 @@
 import { useAuth } from "@/app/hooks/auth";
 import Link from "next/link";
 
-export default async function page() {
+export default  function page() {
     const {user , userRegister} = useAuth()
 
     const handleSubmit = (e) => {

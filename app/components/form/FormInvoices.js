@@ -6,13 +6,11 @@ import { useAuth } from "@/app/hooks/auth"
 
 const FormInvoices = ({ id, value }) => {
     const router = useRouter()
-    const { user } = useAuth()
-
-    let estado
+    const { user, token } = useAuth()
     const [address, setAddress] = useState('')
     const [nit, setNit] = useState('')
-
-
+    let estado
+    console.log(value)
     const handleSubmit = async (e) => {
         e.preventDefault()
         const { postInvoice } = useInvoices()
@@ -20,14 +18,15 @@ const FormInvoices = ({ id, value }) => {
             address,
             nit,
             status: estado.value,
-            value,
+            value:value,
             order_id: id
         }
-        postInvoice(data)
+        console.log(data , token)
+        postInvoice({data, token})
         router.push('/dashboard/ordenes')
 
     }
-    return ( ['admin', 'manager', 'waiter'].includes(user?.role)  ?< form className = " grid grid-cols-3 max-w-7xl w-fit gap-3  " onSubmit = {(e) => handleSubmit(e)}>
+    return ( ['admin', 'manager', 'waitress'].includes(user?.role)  ?< form className = " grid grid-cols-3 max-w-7xl w-fit gap-3  " onSubmit = {(e) => handleSubmit(e)}>
 
 
             <div className="flex items-center  justify-center">

@@ -12,8 +12,7 @@ const OrderDetails = () => {
     const generarOrden = async (e) => {
         const { createOrder } = useOrder()
         e.preventDefault()
-        const data = JSON.stringify({ plates: cart.cart, user_id: user.id })
-        createOrder(data)
+        createOrder({plates: cart.cart, user_id: user.id})
         dispatch({ type: actions.clearcart })
     }
     const whatsapp = (e) => {

@@ -1,24 +1,26 @@
+'use client'
 import UpdateForm from "@/app/components/form/UpdateForm"
 import { useArticle } from "@/app/hooks/article"
 import Image from "next/image"
+import { useEffect, useState } from "react"
 
-export async function generateStaticParams() {
-    const { getData } = useArticle()
-    const res = await getData()
-    const paths = res.map((item) => ({
-        params: { id: item.id },
-    }))
-    return paths
-}
-
-export default async function article({ params }) {
+export default function article({ params }) {
     const { show } = useArticle()
-    const data = await show(params.id)
+    const [data, setData] = useState()    
+
+    const datos = async () => {
+        const data = await show(params.id)
+        setData(data)
+    }
+
+    useEffect(() => {
+        datos()
+    }, [])
 
     return <>
         <main className="flex">
-            <Image src={'http://127.0.0.1:8000/storage/' + data.image} width={0} height={0} alt={data.name} loading="lazy" className="w-full h-[600px]" />
-        <UpdateForm data={data} />
+            <Image src={'http://127.0.0.1:8000/storage/' + data?.image} width={0} height={0} alt={data?.name} loading="lazy" className="w-full h-[600px]" />
+            <UpdateForm data={data} />
         </main>
     </>
 

@@ -31,7 +31,7 @@ export default function TableUser({data}) {
                 </tr>
             </thead>
             <tbody>
-                {users.map(item => <tr className="even:bg-gray-400">
+                {users?.map(item => <tr className="even:bg-gray-400">
                     <Td>{item.nit}</Td>
                     <Td>{item.name}</Td>
                     <Td>{item.email}</Td>
