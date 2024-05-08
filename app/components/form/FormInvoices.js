@@ -10,7 +10,7 @@ const FormInvoices = ({ id, value }) => {
     const [address, setAddress] = useState('')
     const [nit, setNit] = useState('')
     let estado
-    console.log(value)
+    
     const handleSubmit = async (e) => {
         e.preventDefault()
         const { postInvoice } = useInvoices()
@@ -21,7 +21,7 @@ const FormInvoices = ({ id, value }) => {
             value:value,
             order_id: id
         }
-        console.log(data , token)
+
         postInvoice({data, token})
         router.push('/dashboard/ordenes')
 

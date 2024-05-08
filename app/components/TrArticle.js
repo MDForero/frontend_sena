@@ -19,8 +19,6 @@ const TrArticle = ({id}) => {
         datos()
     }, [])
     
-    console.log(data)
-
     return (
         <tr className="bg-gray-200">
             <Td>{data?.id}</Td>

@@ -1,23 +1,22 @@
 'use client'
-import { useAuth } from '@/app/hooks/auth'
 import useUser from '@/app/hooks/user'
 import React, { useState } from 'react'
+import { useAuth } from '@/app/hooks/auth'
 
-const FormUser = ({ id, data, token }) => {
-    
-    const {user} = useAuth()
-
-    const [role, setRole] = useState(data?.user?.role)
-    const [status, setStatus] = useState(data?.user?.status)
+const FormUser = ({ data }) => {
+    const { token } = useAuth()
+    const { name, email, nit } = data
+    const [role, setRole] = useState()
+    const [status, setStatus] = useState()
     const handleSubmit = async (e) => {
         e.preventDefault()
         const { updateData } = useUser()
         const data = {
-            role,
-            status,
-            id: user.id
+            role: role,
+            status: status,
+            nit
         }
-        updateData(id, data , token )
+        updateData(data, token)
     }
 
     return (
@@ -26,19 +25,19 @@ const FormUser = ({ id, data, token }) => {
                 <legend>
                     Nombre
                 </legend>
-                <input value={data?.user?.name} disabled />
+                <input value={name} disabled />
             </fieldset>
             <fieldset>
                 <legend>
                     Email
                 </legend>
-                <input value={data?.user?.email} disabled />
+                <input value={email} disabled />
             </fieldset>
             <fieldset>
                 <legend>
                     Cargo
                 </legend>
-                <select defaultValue={role} onChange={(e) => setRole(e.target.value)} name>
+                <select defaultValue={data?.role} onChange={(e) => setRole(e.target.value)} name>
                     <option value='client'>Client</option>
                     <option value='admin'>Admin</option>
                     <option value='waitress'>Waitress</option>
@@ -50,7 +49,7 @@ const FormUser = ({ id, data, token }) => {
                 <legend>
                     Estado
                 </legend>
-                <select defaultValue={status} onChange={(e) => setStatus(e.target.value)}>
+                <select defaultValue={data?.status} onChange={(e) => setStatus(e.target.value)}>
                     <option value='authorized'>authorized</option>
                     <option value='unauthorized'>unauthorized</option>
                 </select>

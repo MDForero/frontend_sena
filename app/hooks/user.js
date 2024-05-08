@@ -1,22 +1,8 @@
-
-import Axios from 'axios'
-import { useAuth } from './auth'
-
-const axios = Axios.create({
-    baseURL: 'http://127.0.0.1:8000',
-    headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-    }
-})
+import axios from "../lib/axios"
 
 export default function useUser() {
-
-    const csrf = () => axios.get('/sanctum/csrf-cookie').then(res => res.data).catch(error => { console.log(error) })
-
-    const getData = async (token) => {
-        await csrf()
-        const res = await axios.get('/api/users', {
+    const getData = async (token, page) => {
+        const res = await axios.get(`/api/users?page=${page}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -24,15 +10,15 @@ export default function useUser() {
         return res
     }
 
-    const updateData = async (id, data , token) => {
-        await axios.post(`/api/users/${id}`, data, {
+    const updateData = async (data, token) => {
+        await axios.post(`/api/users/${data.nit}`, data, {
             headers: {
                 'Authorization': `Bearer ${token}`,
             }
         }).then(res => {
             alert(res.status)
         }).catch(error => {
-            alert(error.response.statusText, error.response.status)
+            console.log(error)
         })
     }
 

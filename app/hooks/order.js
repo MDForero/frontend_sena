@@ -25,7 +25,6 @@ const show = async ({id, token}) => {
     }
 
     const createOrder = async (data) => {
-        console.log(data)
         axios.post('/api/orders', data).then(res => { alert('orden generada' + ' ' + res.status) }).catch(error => {
             console.log(error.response)
         })

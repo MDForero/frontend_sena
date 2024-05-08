@@ -1,4 +1,5 @@
 'use client'
+import Pagination from "@/app/components/Pagination"
 import { Td, Th } from "@/app/components/Table"
 import useOrder from "@/app/hooks/order"
 import useUser from "@/app/hooks/user"
@@ -8,8 +9,8 @@ import { useState, useEffect } from "react"
 
 export default function Orders() {
     const path = usePathname()
-    const { show } = useUser()
     const { getData } = useOrder()
+    const [page, setPage] = useState(1)
 
     const [data, setData] = useState()
 
@@ -24,6 +25,7 @@ export default function Orders() {
     const date = (date) => new Date(date).toLocaleDateString()
     
     return <>
+    <Pagination page={page} setPage={setPage} last_page={data?.last_page} />
         <table className="border-2 border-separate border-spacing-0 even:bg-slate-400 mx-auto m-4 ">
             <thead>
                 <tr>
@@ -35,7 +37,7 @@ export default function Orders() {
                 </tr>
             </thead>
             <tbody>
-                {data?.orders?.filter(order => order.status === 'pending').sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime() ).map(order =>
+                {data?.data?.filter(order => order.status === 'pending').sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime() ).map(order =>
                     <tr key={order.id}>
                         <Td>{date(order.created_at)}</Td>
                         <Td>{order.id}</Td>

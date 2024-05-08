@@ -19,7 +19,7 @@ export default async function edit(){
                 </tr>
             </thead>
             <tbody>
-                {res?.map((item, index) => <tr key={index}>
+                {res?.data.map((item, index) => <tr key={index}>
                     <td>{item.name}</td>
                     <td>{item.description}</td>
                     <td>{item.value}</td>

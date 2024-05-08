@@ -7,9 +7,9 @@ export  function useArticle() {
     const csrf = () => axios.get('/sanctum/csrf-cookie')
 
 
-    const getData = async (token) => {
+    const getData = async (token, page) => {
         await csrf()
-        const res = await axios.get('/api/articles', {headers:{
+        const res = await axios.get(`/api/articles?page=${page}`, {headers:{
             'Authorization': `Bearer ${token}`
         }}).then(res => res.data)
         return res

@@ -15,8 +15,8 @@ export default function useMaterial() {
 
 
 
-    const getData = async (token) => {
-        const data = await axios.get('materials', {
+    const getData = async (token , page) => {
+        const data = await axios.get(`materials?page=${page}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }

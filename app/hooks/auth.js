@@ -19,17 +19,14 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
 
     const csrf = () => axios.get('/sanctum/csrf-cookie')
 
-    const register = async ({ setErrors, ...props }) => {   
+    const register = async ({ setErrors, ...props }) => {
         await csrf()
 
         setErrors([])
 
         axios
             .post('/register', props)
-            .then((res) => {
-                console.log(res.data, res.status)
-                mutate()
-            })
+            .then(()=>mutate())
             .catch(error => {
                 if (error.response.status !== 422) throw error
                 setErrors(error.response.data.errors)
