@@ -2,14 +2,17 @@
 import { useAuth } from "@/app/hooks/auth";
 import Link from "next/link";
 
-export default  function page() {
-    const {user , userRegister} = useAuth()
+export default function page() {
+    const { user, userRegister } = useAuth()
+
+    const permissions = ['dashboard', 'articulos', 'usuarios', 'inventario', 'facturacion', 'ordenes']
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const form = new FormData(e.target)
-        const data = Object.fromEntries(form)
-        userRegister({id:user.id , ...data})
+        const form = Object.fromEntries(new FormData(e.target))
+        const data = Object.fromEntries(Object.entries(form).filter(([key, value]) => value !== 'on'))
+        const permissions = Object.keys(form).filter(key => form[key] === 'on').join(',')
+        userRegister({ id: user.id, ...data , permissions })
     }
 
     return <>
@@ -36,6 +39,14 @@ export default  function page() {
                 <div className="flex flex-col space-y-2">
                     <label htmlFor="password">Contraseña</label>
                     <input required type="password" name="password" id="password" />
+                </div>
+                <div className="space-y-2">
+                    {permissions.sort((a, b) => a.localeCompare(b)).map((permission, index) => <>
+                        <input type="checkbox" name={permission} id={permission} class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2  " />
+                        <label htmlFor={permission} class="ms-2 text-sm font-medium text-gray-900 ">{permission} </label>
+                        <br />
+                    </>
+                    )}
                 </div>
                 <button className="bg-blue-500 text-white rounded-lg p-2">Guardar</button>
             </form>

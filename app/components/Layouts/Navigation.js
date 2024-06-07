@@ -13,8 +13,8 @@ import { useState } from 'react'
 const Navigation = ({ user }) => {
     const router = useRouter()
     const { logout } = useAuth()
-
     const [open, setOpen] = useState(false)
+    const links = user?.permissions?.split(',')
 
     return (
         <nav className="bg-white border-b border-gray-100">
@@ -36,6 +36,12 @@ const Navigation = ({ user }) => {
                                 active={router.pathname === '/dashboard'}>
                                 Dashboard
                             </NavLink>
+                            {links?.filter(link => link !== 'dashboard').map(link  => <NavLink className='capitalize'
+                                href={`/dashboard/${link}`}
+                                active={router.pathname === `/dashboard/${link}`}>
+                                {link}
+                            </NavLink>)}
+
                         </div>
                     </div>
 
@@ -111,6 +117,11 @@ const Navigation = ({ user }) => {
                             active={router.pathname === '/dashboard'}>
                             Dashboard
                         </ResponsiveNavLink>
+                        {links?.filter(link => link !== 'dashboard').map(link => <ResponsiveNavLink className='capitalize'
+                            href={`/dashboard/${link}`}
+                            active={router.pathname === `/dashboard/${link}`}>
+                            {link}
+                        </ResponsiveNavLink>)}
                     </div>
 
                     {/* Responsive Settings Options */}
