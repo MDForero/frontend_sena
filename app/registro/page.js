@@ -18,6 +18,7 @@ export default function Registro() {
 
     const [nit, setNit] = useState('')
     const [name, setName] = useState('')
+    const [image, setImage] = useState()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
@@ -25,8 +26,9 @@ export default function Registro() {
 
     const submitForm = event => {
         event.preventDefault()
-
+        
         register({
+            image,
             name,
             email,
             password,
@@ -54,6 +56,20 @@ export default function Registro() {
                             value={name}
                             className="block mt-1 w-full"
                             onChange={event => setName(event.target.value)}
+                            required
+                            autoFocus
+                        />
+
+                        <InputError messages={errors.name} className="mt-2" />
+                    </div>
+                    <div>
+                        <Label htmlFor="perfilImage">Imagen de perfil</Label>
+
+                        <Input
+                            id="perfilImage"
+                            type="file"
+                            className="block mt-1 w-full"
+                            onChange={event => setImage(event.target.files[0])}
                             required
                             autoFocus
                         />

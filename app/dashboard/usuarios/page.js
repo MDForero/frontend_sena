@@ -25,18 +25,19 @@ export default function users() {
 
     return (<>
         <div className="flex flex-col space-y-8 justify-center items-center w-full p-2">
-            <div className="w-full flex justify-between items-center">
-                <h1 className="text-2xl font-bold">Usuarios</h1>
-                <Link href="/dashboard/usuarios/nuevo">
+            <div className="w-full flex gap-12 items-center">
+                <h1 className="text-2xl font-bold text-gray-500">Usuarios</h1>
+                <Link href="/dashboard/usuarios/nuevo" className=" bg-gray-50 p-2 font-medium">
                     Nuevo
                 </Link>
             </div>
             <Pagination page={page} setPage={setPage} last_page={data?.last_page} />
-            <div className="overflow-hidden h-[400px] overflow-y-auto">
-                <table className="table-fixed border-spacing-2 border-2">
-                    <thead >
-                        <tr>
+            <div className="overflow-hidden h-[600px] overflow-y-auto">
+                <table className="table-auto border-spacing-2 border-2">
+                    <thead  className="static">
+                        <tr >
                             <Th>ID</Th>
+                            <Th>Imagen</Th>
                             <Th>Nombre</Th>
                             <Th>Correo</Th>
                             <Th>Cargo</Th>
@@ -46,6 +47,7 @@ export default function users() {
                     <tbody >
                         {data?.data && data.data.map(item => <tr className="even:bg-gray-400">
                             <Td>{item.nit}</Td>
+                            <Td><img src={"http://127.0.0.1:8000/storage/"+ item.imgProfile} alt={'profile de ' + item.name} className="w-16 h-16 rounded-full"/></Td>
                             <Td>{item.name}</Td>
                             <Td>{item.email}</Td>
                             <Td>{item.role}</Td>
