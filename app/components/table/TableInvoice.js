@@ -9,7 +9,7 @@ const TableInvoice = ({ invoice }) => {
     const getDate = (date) => new Date(date).getTime()
     const date = (date) => new Date(date).toDateString()
 
-    
+
 
     const handleSearch = (e) => {
         e.preventDefault()
@@ -19,7 +19,7 @@ const TableInvoice = ({ invoice }) => {
     }
 
     return (<>
-        <form onSubmit={handleSearch}>
+         <form onSubmit={handleSearch}>
             <input type='date' name='dateMin' ref={node => dateMin = node} />
             <input type='date' name='dateMax' ref={node => dateMax = node} />
             <button type='submit'>Buscar</button>
@@ -48,7 +48,7 @@ const TableInvoice = ({ invoice }) => {
                     <td></td>
                     <td></td>
                     <td className=" text-right">Valor</td>
-                    <td className=" text-center">{search?.length !== 0 ?search?.map(item => item.value).reduce((acc, item) => acc + item) : NaN}</td>
+                    <td className=" text-center">{search?.length !== 0 ? search?.map(item => item.value).reduce((acc, item) => acc + item) : NaN}</td>
                 </tr>
             </tfoot>
         </table>

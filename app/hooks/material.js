@@ -1,22 +1,11 @@
-
-import Axios from "axios";
-import { useAuth } from "./auth";
-
-const axios = Axios.create({
-    baseURL: "http://127.0.01:8000/api/",
-    headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-    },
-});
-
+import axios from "../lib/axios"
 
 export default function useMaterial() {
 
 
 
     const getData = async (token , page) => {
-        const data = await axios.get(`materials?page=${page}`, {
+        const data = await axios.get(`/api/materials?page=${page}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -24,7 +13,7 @@ export default function useMaterial() {
         return data
     }
     const create = async ({ data, token }) => {
-        await axios.post('materials', data, {
+        await axios.post('/api/materials', data, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -33,7 +22,7 @@ export default function useMaterial() {
         })
     }
     const show = async ({id, token}) => {
-        const res = await axios.get(`materials/${id}`, {
+        const res = await axios.get(`/api/materials/${id}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
             }

@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 
-const Pagination = ({ page, setPage, last_page }) => {
+const Pagination = ({ page, setPage, last_page,}, ) => {
     const paginate = () => {
         let pages = []
         if (page <= last_page - 5) {
@@ -16,9 +16,9 @@ const Pagination = ({ page, setPage, last_page }) => {
         }
         return pages
     }
-
+   
     return (
-        <div className="">
+        <div className='mx-auto w-fit' >
             <div className="flex items-center w-24">
                 <button onClick={() => setPage(page - 1)} disabled={page === 1 ? true : false} type="button" className="w-full p-2 text-base text-gray-600 bg-white border rounded-l-xl hover:bg-gray-100">
                     <svg width="10" fill="currentColor" height="24" className="" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">

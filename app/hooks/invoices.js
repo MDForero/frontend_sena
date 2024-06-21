@@ -1,13 +1,5 @@
-import Axios from 'axios'
+import axios from "../lib/axios"
 
-const axios = Axios.create({
-    baseURL: 'http://127.0.0.1:8000',
-    headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-    },
-    withCredentials: true
-})
 
 export default  function useInvoices() {
     const getData = async (token) => {

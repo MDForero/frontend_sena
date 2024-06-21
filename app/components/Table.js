@@ -11,6 +11,3 @@ export function Td({ children }) {
     </p>
 </td>
 }
-
-
-
