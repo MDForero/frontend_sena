@@ -12,7 +12,7 @@ export default async function Page() {
     return data && <div className="flex gap-2">
         <div className="p-4 bg-white shadow-lg rounded-2xl w-80 ">
             <div className="flex flex-row items-start gap-4">
-                <img src={'https://hammerhead-app-7ljp5.ondigitalocean.app/storage/' + user?.imgProfile} alt="profile" className="rounded-lg w-28 h-28" />
+                <img src={process.env.NEXT_PUBLIC_API_URL + '/storage/' + user?.imgProfile} alt="profile" className="rounded-lg w-28 h-28" />
                 <div className="flex flex-col justify-between w-full h-28">
                     <div>
                         <p className="text-xl font-medium text-gray-800 ">

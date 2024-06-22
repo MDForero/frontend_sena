@@ -53,7 +53,7 @@ const Navigation = ({ user }) => {
                             trigger={
                                 <button className="flex gap-3 items-center text-sm font-medium text-gray-500 hover:text-gray-700 focus:outline-none transition duration-150 ease-in-out">
                                     <div>{user?.name}</div>
-                                    <img src={'https://hammerhead-app-7ljp5.ondigitalocean.app/storage/' + user?.imgProfile} className='h-16 w-16 rounded-full' />
+                                    <img src={process.env.NEXT_PUBLIC_API_URL + '/storage/' + user?.imgProfile} className='h-16 w-16 rounded-full' />
 
                                     <div className="ml-1">
                                         <svg
@@ -132,7 +132,7 @@ const Navigation = ({ user }) => {
                     <div className="pt-4 pb-1 border-t border-gray-200">
                         <div className="flex items-center px-4">
                             <div className="flex-shrink-0">
-                                <img src={'https://hammerhead-app-7ljp5.ondigitalocean.app/storage/' + user?.imgProfile} className='h-20 w-20 rounded-full' />
+                                <img src={process.env.NEXT_PUBLIC_API_URL + '/storage/' + user?.imgProfile} className='h-20 w-20 rounded-full' />
                             </div>
 
                             <div className="ml-3">

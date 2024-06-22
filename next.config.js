@@ -2,7 +2,7 @@
 const nextConfig = {
     reactStrictMode: true,
     images: {
-        domains: ['https://hammerhead-app-7ljp5.ondigitalocean.app'],
+        domains: [process.env.NEXT_PUBLIC_API_URL + ''],
         unoptimized: true,
     },
     output:'standalone',

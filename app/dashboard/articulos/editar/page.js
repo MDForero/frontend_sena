@@ -25,7 +25,7 @@ export default async function Page(){
                     <td>{item.name}</td>
                     <td>{item.description}</td>
                     <td>{item.value}</td>
-                    <td><img src={'https://hammerhead-app-7ljp5.ondigitalocean.app/storage/' + item.image} width={0} height={0} alt={item.title} loading="lazy" className="h-20 w-20 object-cover" /></td>
+                    <td><img src={process.env.NEXT_PUBLIC_API_URL + '/storage/' + item.image} width={0} height={0} alt={item.title} loading="lazy" className="h-20 w-20 object-cover" /></td>
                     <td><Link href={path + item.id}>Editar</Link></td>
                 </tr>)}
             </tbody>

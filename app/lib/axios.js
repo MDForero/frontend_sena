@@ -1,7 +1,7 @@
 import Axios from 'axios'
 
 const axios = Axios.create({
-    baseURL: 'https://hammerhead-app-7ljp5.ondigitalocean.app/',
+    baseURL: process.env.NEXT_PUBLIC_API_URL,
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'multipart/form-data',
