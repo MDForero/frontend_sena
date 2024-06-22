@@ -28,7 +28,7 @@ export default function Page({ params }) {
 
     return <>
         <main className="flex">
-            <Image src={'http://127.0.0.1:8000/storage/' + data?.image} width={0} height={0} alt={data?.name} loading="lazy" className="w-full h-[600px]" />
+            <Image src={'https://hammerhead-app-7ljp5.ondigitalocean.app/storage/' + data?.image} width={0} height={0} alt={data?.name} loading="lazy" className="w-full h-[600px]" />
             <UpdateForm data={data} />
         </main>
     </>

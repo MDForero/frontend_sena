@@ -18,7 +18,7 @@ export default function Article({ data }) {
     return <article>
         <fieldset className="w-60 text-center p-2 border-2 shadow-2xl">
             <legend className="capitalize font-bold text-2xl ">{data?.name}</legend>
-            <img src={'http://127.0.0.1:8000/storage/' + data?.image} width={0} height={0} alt={data?.title} className="h-52 w-52 mx-auto object-cover" />
+            <img src={'https://hammerhead-app-7ljp5.ondigitalocean.app/storage/' + data?.image} width={0} height={0} alt={data?.title} className="h-52 w-52 mx-auto object-cover" />
             <div className="flex flex-wrap gap-3 m-2 mx-auto w-full justify-center items-center">
                 <button onClick={() => setAmount(amount - 1)} className={`border-2 p-3 rounded-full ${amount === 0 ? '' : ' hover:bg-red-500'}`} disabled={amount === 0 ? true : false}><svg viewBox="0 -12 32 32" className="w-4 h-4" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier">  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" > <g id="Icon-Set-Filled" transform="translate(-414.000000, -1049.000000)" fill="#000000"> <path d="M442,1049 L418,1049 C415.791,1049 414,1050.79 414,1053 C414,1055.21 415.791,1057 418,1057 L442,1057 C444.209,1057 446,1055.21 446,1053 C446,1050.79 444.209,1049 442,1049" id="minus" > </path> </g> </g> </g></svg></button>
                 <p className="font-bold text-3xl">{amount}</p>

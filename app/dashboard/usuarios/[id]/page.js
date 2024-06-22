@@ -11,7 +11,7 @@ export default async function Page({ params }) {
     const data = await show(params.id, token)
     return (
         <div className="flex flex-col justify-center items-center space-y-8">
-            <img src={'http://127.0.0.1:8000/storage/' + data?.user?.imgProfile} className='w-40 rounded-full' />
+            <img src={'https://hammerhead-app-7ljp5.ondigitalocean.app/storage/' + data?.user?.imgProfile} className='w-40 rounded-full' />
             {data?.user && <><FormUser data={data?.user} />
                 <TableInvoice invoice={data?.invoices} /></>}
         </div>
