@@ -26,7 +26,7 @@ export default function Orders() {
     
     return <>
     <Pagination page={page} setPage={setPage} last_page={data?.last_page} />
-        <table className="border-2 border-separate border-spacing-0 even:bg-slate-400 mx-auto m-4 ">
+        <table className="border-2 border-separate border-spacing-0 mx-auto m-4 ">
             <thead>
                 <tr>
                     <Th>Fecha</Th>

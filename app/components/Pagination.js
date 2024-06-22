@@ -18,8 +18,8 @@ const Pagination = ({ page, setPage, last_page,}, ) => {
     }
    
     return (
-        <div className='mx-auto w-fit' >
-            <div className="flex items-center w-24">
+        <div className='max-w-7xl mx-auto w-fit flex justify-center items-center' >
+            
                 <button onClick={() => setPage(page - 1)} disabled={page === 1 ? true : false} type="button" className="w-full p-2 text-base text-gray-600 bg-white border rounded-l-xl hover:bg-gray-100">
                     <svg width="10" fill="currentColor" height="24" className="" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1427 301l-531 531 531 531q19 19 19 45t-19 45l-166 166q-19 19-45 19t-45-19l-742-742q-19-19-19-45t19-45l742-742q19-19 45-19t45 19l166 166q19 19 19 45t-19 45z">
@@ -41,7 +41,6 @@ const Pagination = ({ page, setPage, last_page,}, ) => {
                         </path>
                     </svg>
                 </button>
-            </div>
         </div>
     )
 }
