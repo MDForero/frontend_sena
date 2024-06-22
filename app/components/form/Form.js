@@ -15,7 +15,7 @@ const Form = ({ article }) => {
     const handleSubmmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post(`https://hammerhead-app-7ljp5.ondigitalocean.app/api/platesupdate/${article.id}`, { name, description, price }, { headers: { 'Content-Type': 'multipart/form-data' } })
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/platesupdate/${article.id}`, { name, description, price }, { headers: { 'Content-Type': 'multipart/form-data' } })
             if (response.status === 200) {
                 router.push('/menu/product-list')
                 alert('Producto editado')
@@ -27,7 +27,7 @@ const Form = ({ article }) => {
     const handleDelete = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.delete(`https://hammerhead-app-7ljp5.ondigitalocean.app/api/plates/${article.id}`)
+            const response = await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/api/plates/${article.id}`)
             if (response.status === 200) {
                 router.push('/menu/product-list')
                 alert('Producto eliminado')

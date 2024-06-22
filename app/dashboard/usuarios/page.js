@@ -48,7 +48,7 @@ export default function Page() {
                 <tbody className=" ">
                     {data?.data && data.data.map(item => <tr key={item.name} className="even:bg-gray-400">
                         <Td>{item.nit}</Td>
-                        <Td><img src={"https://hammerhead-app-7ljp5.ondigitalocean.app/storage/" + item.imgProfile} alt={'profile de ' + item.name} className="w-16 h-16 rounded-full" /></Td>
+                        <Td><img src={process.env.NEXT_PUBLIC_API_URL+ "/storage/" + item.imgProfile} alt={'profile de ' + item.name} className="w-16 h-16 rounded-full" /></Td>
                         <Td>{item.name}</Td>
                         <Td>{item.email}</Td>
                         <Td>{item.role}</Td>
