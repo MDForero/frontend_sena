@@ -2,7 +2,7 @@ import { Td, Th } from "@/app/components/Table";
 import TrArticle from "@/app/components/TrArticle";
 import useMaterial from "@/app/hooks/material";
 
-export default async function page({ params }) {
+export default async function Page({ params }) {
     
     return <><table className="border-2 border-spacing-5 ">
         <thead >

@@ -4,9 +4,18 @@ import { useArticle } from "@/app/hooks/article"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 
-export default function article({ params }) {
+// export const dynamicParams = true
+
+// export async function getStaticPaths() {
+//     return {
+//         paths: [],
+//         fallback: 'false'
+//     };
+// }
+
+export default function Page({ params }) {
     const { show } = useArticle()
-    const [data, setData] = useState()    
+    const [data, setData] = useState()
 
     const datos = async () => {
         const data = await show(params.id)

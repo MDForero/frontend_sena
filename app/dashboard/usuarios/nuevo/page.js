@@ -2,7 +2,7 @@
 import { useAuth } from "@/app/hooks/auth";
 import Link from "next/link";
 
-export default function page() {
+export default function Page() {
     const { user, userRegister } = useAuth()
 
     const permissions = ['dashboard', 'articulos', 'usuarios', 'inventario', 'facturacion', 'ordenes']

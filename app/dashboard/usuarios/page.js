@@ -6,7 +6,7 @@ import useUser from "@/app/hooks/user"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 
-export default function users() {
+export default function Page() {
 
     const { token } = useAuth()
     const { getData } = useUser()
@@ -46,7 +46,7 @@ export default function users() {
                     </tr>
                 </thead>
                 <tbody className=" ">
-                    {data?.data && data.data.map(item => <tr className="even:bg-gray-400">
+                    {data?.data && data.data.map(item => <tr key={item.name} className="even:bg-gray-400">
                         <Td>{item.nit}</Td>
                         <Td><img src={"http://127.0.0.1:8000/storage/" + item.imgProfile} alt={'profile de ' + item.name} className="w-16 h-16 rounded-full" /></Td>
                         <Td>{item.name}</Td>

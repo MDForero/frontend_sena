@@ -11,7 +11,7 @@ const FormInvoices = ({ id, value }) => {
     const [nit, setNit] = useState('')
     let estado
     
-    const handleSubmit = async (e) => {
+    const HandleSubmit = async (e) => {
         e.preventDefault()
         const { postInvoice } = useInvoices()
         const data = {
@@ -26,7 +26,7 @@ const FormInvoices = ({ id, value }) => {
         router.push('/dashboard/ordenes')
 
     }
-    return ( ['admin', 'manager', 'waitress'].includes(user?.role)  ?< form className = " grid grid-cols-3 max-w-7xl w-fit gap-3  " onSubmit = {(e) => handleSubmit(e)}>
+    return ( ['admin', 'manager', 'waitress'].includes(user?.role)  ?< form className = " grid grid-cols-3 max-w-7xl w-fit gap-3  " onSubmit = {(e) => HandleSubmit(e)}>
 
 
             <div className="flex items-center  justify-center">

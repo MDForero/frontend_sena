@@ -10,7 +10,7 @@ const OrderDetails = () => {
     const cart = useCart()
     const { user } = useAuth()
     const dispatch = useCartDispatch()
-    const generarOrden = async (e) => {
+    const GenerarOrden = async (e) => {
         const { createOrder } = useOrder()
         e.preventDefault()
         createOrder({ plates: cart.cart, user_id: user.id })
@@ -67,7 +67,7 @@ const OrderDetails = () => {
                             </tfoot>
                         </table>
 
-                        <button className='p-2 border-2 rounded-lg hover:bg-green-500 duration-200' onClick={(e) => ['admin', 'manager', 'waiter'].includes(user.role) ? generarOrden(e) : whatsapp(e)}>Ordenar</button>
+                        <button className='p-2 border-2 rounded-lg hover:bg-green-500 duration-200' onClick={(e) => ['admin', 'manager', 'waiter'].includes(user.role) ? GenerarOrden(e) : whatsapp(e)}>Ordenar</button>
                         <a href='#' name='whatsapp' className='hidden' >whatsapp</a>
                     </fieldset></div>
             </>

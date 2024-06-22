@@ -5,6 +5,7 @@ const nextConfig = {
         domains: ['http://127.0.0.1:8000'],
         unoptimized: true,
     },
+    output:'standalone',
     trailingSlash: true,
 
 

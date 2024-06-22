@@ -11,7 +11,7 @@ const FormUser = ({ data }) => {
     const [role, setRole] = useState(data?.role)
     const [status, setStatus] = useState(data?.status) 
 
-    const handleSubmit = async (e) => {
+    const HandleSubmit = async (e) => {
         e.preventDefault()
         const permissions = Object.keys(Object.fromEntries(new FormData(e.target))).join(',')
         const { updateData } = useUser()
@@ -26,7 +26,7 @@ const FormUser = ({ data }) => {
     }
 
     return (
-        <form onSubmit={(e) => handleSubmit(e)} className='flex flex-col'>
+        <form onSubmit={(e) => HandleSubmit(e)} className='flex flex-col'>
             <fieldset>
                 <legend className='font-semibold '>
                     Nombre

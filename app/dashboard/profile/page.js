@@ -3,7 +3,7 @@ import TableInvoice from "@/app/components/table/TableInvoice"
 import { useAuth } from "@/app/hooks/auth"
 import useUser from "@/app/hooks/user"
 
-export default async function page() {
+export default async function Page() {
     const { user } = useAuth()
     const { show } = useUser()
     const data = await show(user?.nit)

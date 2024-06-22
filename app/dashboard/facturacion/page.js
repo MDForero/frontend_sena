@@ -5,7 +5,7 @@ import { useAuth } from "@/app/hooks/auth"
 import useInvoices from "@/app/hooks/invoices"
 import { useEffect, useState } from "react"
 
-export default  function page() {
+export default  function Page() {
     const { token } = useAuth()
     const { getData } = useInvoices()
     const [data, setData] = useState()

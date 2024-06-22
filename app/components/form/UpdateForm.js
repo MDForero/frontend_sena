@@ -14,7 +14,7 @@ const UpdateForm = ({ data }) => {
     const [category, setCategory] = useState(data?.category)
 
 
-    const updateData = (e) => {
+    const UpdateData = (e) => {
         e.preventDefault()
         const { update } = useArticle()
         update({ name, description, value, image, category, id: data.id })
@@ -22,7 +22,7 @@ const UpdateForm = ({ data }) => {
     }
 
 
-    const deleteData = (e) => {
+    const DeleteData = (e) => {
         e.preventDefault
         const { deleteArticle } = useArticle()
         deleteArticle(data.id)
@@ -30,7 +30,7 @@ const UpdateForm = ({ data }) => {
     }
 
     return (<>
-        <form onSubmit={updateData} className='p-4 border m-2 rounded-lg'>
+        <form onSubmit={UpdateData} className='p-4 border m-2 rounded-lg'>
             <fieldset >
                 <legend>Nombre</legend>
                 <Input type="text" value={name} onChange={(e) => setName(e.target.value)} />
@@ -53,7 +53,7 @@ const UpdateForm = ({ data }) => {
             </fieldset>
             <div className='w-96 flex justify-between p-4'>
                 <button type='submit'>Guardar</button>
-                <button type='button' onClick={(e) => deleteData(e)}>Eliminar</button>
+                <button type='button' onClick={(e) => DeleteData(e)}>Eliminar</button>
             </div>
         </form>
     </>

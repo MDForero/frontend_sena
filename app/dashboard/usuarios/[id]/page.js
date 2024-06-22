@@ -5,7 +5,7 @@ import TableInvoice from "@/app/components/table/TableInvoice";
 import { useAuth } from "@/app/hooks/auth";
 
 
-export default async function page({ params }) {
+export default async function Page({ params }) {
     const { token } = useAuth()
     const { show } = useUser()
     const data = await show(params.id, token)

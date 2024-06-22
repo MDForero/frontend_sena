@@ -3,7 +3,9 @@ import {useArticle} from "@/app/hooks/article";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default async function edit(){
+
+
+export default async function Page(){
     const path = usePathname()
     const {getData} = useArticle()
     const res = await getData()

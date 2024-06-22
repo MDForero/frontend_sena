@@ -11,7 +11,7 @@ export  function useArticle() {
         await csrf()
         const res = await axios.get(`/api/articles?page=${page}`, {headers:{
             'Authorization': `Bearer ${token}`
-        }}).then(res => res.data)
+        }}).then(res => res.data).catch(error => { console.log(error.response.data) })
         return res
     }
 

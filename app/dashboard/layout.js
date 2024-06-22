@@ -16,7 +16,7 @@ const DashboardLayout = ({ children }) => {
     <section className="h-screen  max-w-screen-2xl relative mx-auto ">
       <Navigation user={user} />
       <main className="w-full flex items-start">
-        <section className="w-full ">
+        <section className="w-full">
 
           <CartProvider>
             {children}

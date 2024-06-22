@@ -8,7 +8,7 @@ import useMaterial from "@/app/hooks/material";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export default function page() {
+export default function Page() {
 
     const { getData } = useMaterial()
     const [page, setPage] = useState(1)

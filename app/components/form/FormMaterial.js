@@ -5,7 +5,7 @@ import useMaterial from "@/app/hooks/material"
 
 export default function FormMaterial({id = null, name = null, quantity = null}) {
     const {token} = useAuth()
-    const handleSubmit = async (e) => {
+    const HandleSubmit = async (e) => {
         e.preventDefault()
         const { name, quantity } = e.target
         const data = {
@@ -16,7 +16,7 @@ export default function FormMaterial({id = null, name = null, quantity = null}) 
         name.value = ""
         quantity.value = ""
     }
-    return <form onSubmit={handleSubmit} className="flex flex-col gap-4 justify-center items-center w-full ">
+    return <form onSubmit={HandleSubmit} className="flex flex-col gap-4 justify-center items-center w-full ">
         <fieldset className="flex gap-2 w-fit border p-4 ">
             <legend className="text-center ">Material</legend>
             <div className="flex flex-col">

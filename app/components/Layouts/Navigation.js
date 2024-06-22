@@ -36,7 +36,7 @@ const Navigation = ({ user }) => {
                                 active={router.pathname === '/dashboard'}>
                                 Dashboard
                             </NavLink>
-                            {links?.filter(link => link !== 'dashboard').map(link => <NavLink className='capitalize'
+                            {links?.filter(link => link !== 'dashboard').map(link => <NavLink key={link} className='capitalize'
                                 href={`/dashboard/${link}`}
                                 active={router.pathname === `/dashboard/${link}`}>
                                 {link}
@@ -121,7 +121,7 @@ const Navigation = ({ user }) => {
                             active={router.pathname === '/dashboard'}>
                             Dashboard
                         </ResponsiveNavLink>
-                        {links?.filter(link => link !== 'dashboard').map(link => <ResponsiveNavLink className='capitalize'
+                        {links?.filter(link => link !== 'dashboard').map(link => <ResponsiveNavLink key={link} className='capitalize'
                             href={`/dashboard/${link}`}
                             active={router.pathname === `/dashboard/${link}`}>
                             {link}
