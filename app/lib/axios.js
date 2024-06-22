@@ -1,4 +1,3 @@
-import 'dotenv/config'
 import Axios from 'axios'
 
 const axios = Axios.create({
