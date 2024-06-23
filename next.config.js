@@ -5,7 +5,6 @@ const nextConfig = {
         domains: [process.env.NEXT_PUBLIC_API_URL + ''],
         unoptimized: true,
     },
-    output:'standalone',
     trailingSlash: true,
 
 
