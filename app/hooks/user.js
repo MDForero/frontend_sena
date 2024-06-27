@@ -27,7 +27,7 @@ export default function useUser() {
             headers: {
                 'Authorization': `Bearer ${token}`,
             }
-        }).then(res => res.data).catch(error => { console.log(error.response.data.error) })
+        }).then(res => res.data).catch(error =>  error.response )
         return res
     }
 

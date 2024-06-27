@@ -2,21 +2,18 @@
 import axios from '../lib/axios'
 
 
-export  function useArticle() {
-
-    const csrf = () => axios.get('/sanctum/csrf-cookie')
-
+export function useArticle() {
 
     const getData = async (token, page) => {
-        await csrf()
-        const res = await axios.get(`/api/articles?page=${page}`, {headers:{
-            'Authorization': `Bearer ${token}`
-        }}).then(res => res.data).catch(error => { console.log(error.response.data) })
+        const res = await axios.get(`/api/articles?page=${page}`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }).then(res => res.data).catch(error => { error.response })
         return res
     }
 
     const createArticle = async (data) => {
-        await csrf()
         axios.post('/api/article', data).then(res => {
             alert("el producto ha sido agregado" + res.status)
         }).catch(error => {
@@ -24,17 +21,17 @@ export  function useArticle() {
         })
     }
 
-    const show = async (id , token) => {
-        await csrf()
-        const res = await axios.get(`/api/article/${id}`, {headers: {
-            'Authorization': `Bearer ${token}`
-        }}).then(res => res.data).catch(error => { alert(error.response.status + ' ' + error.response.data.message) })
+    const show = async (id, token) => {
+        const res = await axios.get(`/api/article/${id}`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }).then(res => res.data).catch(error => { alert(error.response.status + ' ' + error.response.data.message) })
         return res
     }
-    
+
 
     const update = async (data) => {
-        await csrf()
         axios.post(`/api/article/${data.id}`, data).then(res => {
             alert("el producto ha sido actualizado" + ' ' + res.status)
         }).catch(error => { alert(error.response.data.status + ' ' + error.response.data.message) })
